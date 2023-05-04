@@ -1,0 +1,49 @@
+<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Repuestos</mat-card-title>
+    </mat-card-header>
+    <br>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input type="number" matInput placeholder="Valor" formControlName="valor">
+            <mat-error *ngIf="addressForm.controls['valor'].hasError('required')">
+              Valor <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-select matInput placeholder="Tipo" formControlName="tipo">
+              <mat-option value="Rin">Rin</mat-option>
+              <mat-option value="Vidrio">Vidrio</mat-option>
+              <mat-option value="Llanta">Llanta</mat-option>
+              <mat-option value="Manubrio">Manubrio</mat-option>
+              <mat-option value="Silla">Silla</mat-option>
+            </mat-select>
+            <mat-error *ngIf="addressForm.controls['tipo'].hasError('required')">
+              Tipo <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-select matInput placeholder="Vehiculo" formControlName="vehiculo">
+              <mat-option value="1">1</mat-option>
+              <mat-option value="2">2</mat-option>
+              <mat-option value="3">3</mat-option>
+            </mat-select>
+            <mat-error *ngIf="addressForm.controls['vehiculo'].hasError('required')">
+              Vehículo <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

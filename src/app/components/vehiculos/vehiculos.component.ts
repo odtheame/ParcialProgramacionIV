@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
+import { TableService } from 'src/app/services/table.service';
 
 @Component({
   selector: 'app-vehiculos',
@@ -8,12 +9,16 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class VehiculosComponent implements OnInit{
 
-  constructor(public api: ApiService){}
+  constructor(public api: ApiService, public tableService: TableService){}
 
-  ngOnInit(): any{
-    var response = this.api.getAll("Repuestoes")
-    console.log(response)
-    return response
+  async ngOnInit() {
+    var own = await this.GetVehiculos();
+    this.tableService.setResponseTable(own);
+  }
+
+  async GetVehiculos(): Promise<any>{
+    var get = await this.api.getAll("Vehiculoes")
+    return get;
   }
 
 }

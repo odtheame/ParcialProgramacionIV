@@ -1,0 +1,71 @@
+<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Vehiculos</mat-card-title>
+    </mat-card-header>
+    <br>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-select matInput placeholder="Marca" formControlName="marca">
+              <mat-option value="Nissan">Nissan</mat-option>
+              <mat-option value="Toyota">Toyota</mat-option>
+              <mat-option value="Hyundai">Hyundai</mat-option>
+              <mat-option value="Audi">Audi</mat-option>
+              <mat-option value="BMW">BMW</mat-option>
+            </mat-select>
+            <mat-error *ngIf="addressForm.controls['marca'].hasError('required')">
+              Marca <strong>requerida</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-select matInput placeholder="Color" formControlName="color">
+              <mat-option value="Rojo">Rojo</mat-option>
+              <mat-option value="Naranja">Naranja</mat-option>
+              <mat-option value="Verde">Verde</mat-option>
+              <mat-option value="Blanco">Blanco</mat-option>
+              <mat-option value="Negro">Negro</mat-option>
+            </mat-select>
+            <mat-error *ngIf="addressForm.controls['color'].hasError('required')">
+              Color <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-select matInput placeholder="Modelo" formControlName="modelo">
+              <mat-option value="1">1</mat-option>
+              <mat-option value="2">2</mat-option>
+              <mat-option value="3">3</mat-option>
+            </mat-select>
+            <mat-error *ngIf="addressForm.controls['modelo'].hasError('required')">
+              Modelo <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Placa" formControlName="placa">
+            <mat-error *ngIf="addressForm.controls['placa'].hasError('required')">
+              Placa <strong>requerida</strong>
+            </mat-error>
+            <mat-error *ngIf="addressForm.get('placa').hasError('minlength')">
+              Placa debe ser de <strong>6 digitos</strong>
+            </mat-error>
+            <mat-error *ngIf="addressForm.get('placa').hasError('maxlength')">
+              Placa debe ser de <strong>6 digitos</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
